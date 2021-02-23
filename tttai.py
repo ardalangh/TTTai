@@ -28,8 +28,14 @@ def showGrid(grid):
 
 
 def AIstartFirstBeSmart(grid):
-    i = random.randint(0, 3)
-    j = random.randint(0, 3)
+    """
+    mayber later on your AI should start in a diff way 
+    not random. 
+    """
+    global AI_MoveCounter, HUMAN_MoveCounter 
+
+    i = random.randint(0, 2)
+    j = random.randint(0, 2)
     grid[i][j] = AI
     AI_MoveCounter += 1
 
@@ -42,6 +48,17 @@ def AImove(grid):
 
 
     
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -130,3 +147,7 @@ def minimax(state, depth, player):
                 best = score 
 
     return best 
+
+
+AImove(grid)
+showGrid(grid)
