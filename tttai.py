@@ -49,3 +49,20 @@ def evaluate(state):
     return score
 
 
+def gameOver(state):
+    return wins(state, HUMAN) or wins(state. AI)
+
+
+def emptyCell(state):
+    cells = []
+
+    for x, row in enumerate(state):
+        for y , cell in enumerate(row):
+            if cell == 0 : 
+                cells.append([x, y])
+    return cells
+
+def validMove(x, y):
+    if [x, y] in emptyCell(board): return True
+    else: return False
+    
