@@ -1,18 +1,48 @@
-from math import infinity 
+# from math import infinity 
 import random 
 import time 
+from tabulate import tabulate
 
 
 
 
 AI = +1 
 HUMAN = -1
+AI_MoveCounter = 0 
+HUMAN_MoveCounter = 0 
+
 
 grid = [
     [0,0,0],
     [0,0,0],
     [0,0,0],
 ]
+
+
+def showGrid(grid):
+    print(tabulate([[grid[0][0],grid[0][1],grid[0][2]],
+                    [grid[1][0],grid[1][1],grid[1][2]],
+                    [grid[2][0],grid[2][1],grid[2][2]]
+                    ]
+                ))
+
+
+def AIstartFirstBeSmart(grid):
+    i = random.randint(0, 3)
+    j = random.randint(0, 3)
+    grid[i][j] = AI
+    AI_MoveCounter += 1
+
+
+
+def AImove(grid):
+    if AI_MoveCounter == 0 and HUMAN_MoveCounter == 0:
+        AIstartFirstBeSmart(grid)
+
+
+
+    
+
 
 
 
@@ -87,7 +117,7 @@ def minimax(state, depth, player):
     for cell in emptyCell(state):
         x, y = cell
         state[x][y] = player
-          = minimax(state, depth - 1, -player)
+        # minimax(state, depth - 1, -player)
         state[x][y] = 0 
         score[0], score[1] = x, y 
 
