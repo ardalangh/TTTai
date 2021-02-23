@@ -65,4 +65,38 @@ def emptyCell(state):
 def validMove(x, y):
     if [x, y] in emptyCell(board): return True
     else: return False
-    
+
+
+def setMove(x, y, player):
+    if validMove(x, y):
+        board[x][y] = player
+        return True 
+    else: return False
+
+
+def minimax(state, depth, player):
+    if player == AI:
+        best = [-1, -1, -infinity]
+    else: 
+        best = [-1, -1, +infinity]
+
+
+    if depth == 0 or gameOver(state):
+        score = evaluate(state)
+        return [-1, -1, score]
+    for cell in emptyCell(state):
+        x, y = cell
+        state[x][y] = player
+          = minimax(state, depth - 1, -player)
+        state[x][y] = 0 
+        score[0], score[1] = x, y 
+
+
+        if player == AI: 
+            if score[2] > best[2]:
+                best = score
+        else:
+            if score[2] < best[2]:
+                best = score 
+
+    return best 
