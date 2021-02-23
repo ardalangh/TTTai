@@ -4,6 +4,10 @@ import time
 
 
 
+
+AI = +1 
+HUMAN = -1
+
 grid = [
     [0,0,0],
     [0,0,0],
@@ -31,7 +35,17 @@ def wins(state, player):
         [grid[0][0],grid[1][1],grid[2][2]],
         [grid[2][0],grid[1][1],grid[0][2]],
     ]
+    if [player, player, player] in win_states: return True
+    else: return False
 
 
+def evaluate(state):
+    if wins(state, AI):
+        score = +1
+    elif wins(state, HUMAN):
+        score = -1 
+    else: 
+        score = 0
+    return score
 
-    
+
